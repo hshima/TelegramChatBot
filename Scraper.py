@@ -24,12 +24,25 @@ def main():
     igual = soup.find_all("div", class_ = "box-preco-bea e")
     alta = soup.find_all("div", class_ = "box-preco-bea a")
 
-    print(baixa[0].text)
-    print(igual[0].text)
-    print(alta[0].text)
+    subiu = alta[0].text
+    desceu = baixa[0].text
+    igual = igual[0].text
+
+    return {'subiu': subiu,'desceu': desceu, "igual": igual}
+
+def subiu():
+    return main()['subiu']
+
+def desceu():
+    return main()['desceu']
+
+def igual():
+    return main()['igual']
 
 def test():
     pass
 
+'''
 if __name__ == "__main__":
-    main()
+    subiu()
+'''
