@@ -5,10 +5,10 @@ import Scraper
 
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Dia-me, quer saber o que subiu, desceu ou ficou com preço igual?')
-    update.message.reply_text('/subiu')
-    update.message.reply_text('/desceu')
-    update.message.reply_text('/igual')
+    update.message.reply_text('Diga-me, quer saber o que encareceu, barateou ou manteve com preço igual?')
+    update.message.reply_text('/encareceu')
+    update.message.reply_text('/barateou')
+    update.message.reply_text('/manteve')
 
 def help_command(update, context):
     """Send a message when the command /help is issued."""
@@ -19,10 +19,10 @@ def help_command(update, context):
 
 def default(update, context):
     """the user message."""
-    update.message.reply_text("Por favor, escolha uma das opções para que eu possa te dizer o que subiu, desdeu ou ficou com o mesmo valor:")
-    update.message.reply_text('/subiu')
-    update.message.reply_text('/desceu')
-    update.message.reply_text('/igual')
+    update.message.reply_text("Por favor, escolha uma das opções para que eu possa te dizer o que encareceu, barateou ou manteve com o mesmo valor:")
+    update.message.reply_text('/encareceu')
+    update.message.reply_text('/barateou')
+    update.message.reply_text('/manteve')
 
 def subiu(update, context):
     update.message.reply_text(Scraper.subiu())
@@ -38,9 +38,9 @@ if __name__ == "__main__":
 
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("subiu", subiu))
-    dp.add_handler(CommandHandler("desceu", desceu))
-    dp.add_handler(CommandHandler("igual", igual))
+    dp.add_handler(CommandHandler("encareceu", subiu))
+    dp.add_handler(CommandHandler("barateou", desceu))
+    dp.add_handler(CommandHandler("manteve", igual))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, default))
 
     updater.start_polling()
